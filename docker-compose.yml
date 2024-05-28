@@ -15,7 +15,7 @@ services:
       - hoge:/frontend/node_modules
     working_dir: /frontend
     ports:
-      - 3001:3000
+      - 3000:3000
     tty: true
     stdin_open: true
     environment:
