@@ -35,15 +35,15 @@ export default function Table1() {
 
   return (
     <Box sx={{ width: '100%', overflowX: 'auto' }}>
-      <Typography variant="subtitle1" gutterBottom>
+      <strong>
         1. 前に踏み出す力（アクション）
-      </Typography>
+      </strong>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
               {headerRows.map((d, i) => (
-                <TableCell key={i} align="center" sx={{ whiteSpace: 'nowrap' }}>{d}</TableCell>
+                <TableCell key={i} align="center" sx={{ whiteSpace: 'nowrap' }}><strong>{d}</strong></TableCell>
               ))}
             </TableRow>
           </TableHead>
@@ -52,12 +52,12 @@ export default function Table1() {
               <React.Fragment key={i}>
                 <TableRow>
                   <TableCell rowSpan={item.details.length+1}>
-                    {item.ability_facotr}
+                    <strong>{item.ability_facotr}</strong>
                   </TableCell>
                 </TableRow>
                 {item.details.map((d, i) => (
                   <TableRow key={i}>
-                    <TableCell>{i+1}</TableCell>
+                    <TableCell><strong>{i+1}</strong></TableCell>
                     <TableCell sx={{ whiteSpace: 'nowrap' }}>{d.content}</TableCell>
                     <TableCell>
                       <TextField
