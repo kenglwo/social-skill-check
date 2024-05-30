@@ -6,18 +6,15 @@ const options = ["非常にあてはまる", "かなりあてはまる", "やや
 export default function Header() {
 
   return (
-      <Box >
-        <Typography variant="h5" gutterBottom>
-          社会人基礎力チェック表
+    <Box sx={{mt: 3, mb: 3}}>
+      <Typography variant="h5" gutterBottom>
+        社会人基礎力チェック表
       </Typography>
       <Stack direction="row" spacing={1}>
-        <div><strong>I:</strong> 非常にあてはまる</div>
-        <div><strong>II:</strong> かなりあてはまる</div>
-        <div><strong>III:</strong> ややあてはまる</div>
-        <div><strong>IV:</strong> あまりあてはまらあい</div>
-        <div><strong>V:</strong> ほとんどあてはまらない</div>
-        <div><strong>VI:</strong> 全くあてはまらない</div>
+        {options.map((d, i) => (
+          <div><strong>{6-i}:</strong> {d}</div>
+        ))}
       </Stack>
-    </Box>
+  </Box>
   )
 }
