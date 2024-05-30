@@ -2,7 +2,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 
-const options = ["非常にあてはまる", "かなりあてはまる", "ややあてはまる", "あまりあてはまらあい", "ほとんどあてはまらない", "全くあてはまらない"]
+const options = ["非常にあてはまる", "かなりあてはまる", "ややあてはまる", "あまりあてはまらない", "ほとんどあてはまらない", "全くあてはまらない"]
 export default function Header() {
 
   return (
