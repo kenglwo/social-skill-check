@@ -15,7 +15,7 @@ import Tooltip from '@mui/material/Tooltip';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
-export default function Table1() {
+export default function Table2() {
 
   // const [studentList, setStudentList] = useState<StudentList[]>();
 
@@ -23,27 +23,27 @@ export default function Table1() {
 
   const tableRows = [
     {
-      "ability_facotr": "主体性",
+      "ability_facotr": "課題発見力`",
       "details": [
-        {"content": "グループでの取り組みで、自分の役割は何かを見極めている", "example": "例：自分がやるべきことは何かを見極め、自発的に取り組むことができる"},
-        {"content": "困難なことでも自分の強みを生かして取り組んでいる", "example": "例：自分の強み・弱みを把握し、困難なことでも自信を持って取り組むことができる"},
-        {"content": "自分の役割や課題に対して自発的・自律的に行動している", "example": "例：自分なりに判断し、他者に流されず行動できる"},
+        {"content": "目標達成のために現段階での課題を的確に把握している", "example": "成果のイメージを明確にして、その実現のために現段階でなすべきことを的確に把握できる"},
+        {"content": "現状を正しく認識するための情報収集や分析をしている", "example": "現状を正しく認識するための情報収集や分析ができる"},
+        {"content": "課題を明らかにするために、他者の意見を積極的に求めている", "example": "課題を明らかにするために、他者の意見を積極的に求めることができる"},
       ]
     },
     {
-      "ability_facotr": "働きかけ力",
+      "ability_facotr": "計画力",
       "details": [
-        {"content": "メンバーの協力を得るために、協力の必要性や目的を伝えている", "example": "相手を納得させるために、協力することの必然性（意義、理由、内容など）を伝えることができる"},
-        {"content": "状況に応じて効果的な協力を得るために、様々な手段を活用している", "example": "状況に応じて効果的に巻き込むために手段を活用することができる"},
-        {"content": "グループの目標を達成するために積極的にメンバーに働きかけている", "example": "周囲の人を動かして目標を達成するパワーを持って働きかけることができる"},
+        {"content": "目標達成までのプロセスを明確化し、実現性の高い計画を立てている", "example": "作業のプロセスを明らかにして優先順位をつけ、実現性の高い計画を立てられる"},
+        {"content": "目標達成までの計画と実際の進み具合の違いに留意している", "example": "常に計画と進捗状況の違いに留意することができる"},
+        {"content": "計画の進み具合や不測の事態に合わせて、柔軟に計画を修正している", "example": "進捗状況や不測の事態に合わせて、柔軟に計画を修正できる"},
       ]
     },
     {
-      "ability_facotr": "実行力",
+      "ability_facotr": "創造力",
       "details": [
-        {"content": "目標達成に向かって粘り強く取り組みを続けている", "example": "小さな成果に喜びを感じ、目標達成に向かって粘り強く取り組みを続けることができる"},
-        {"content": "とにかくやってみようとする果敢さを持って課題に取り組んでいる", "example": "失敗を怖れずに、とにかくやってみようとする果敢さを持って、取り組むことができる"},
-        {"content": "困難な状況から逃げずに目標に向かって取り組み続けている", "example": "強い意志を持ち、困難な状況から逃げずに取り組み続けることができる"},
+        {"content": "複数のもの・考え方・技術等を組み合わせ、新しいものを作り出している", "example": "複数のもの（もの、考え方、技術等）を組み合わせて、新しいものを作り出すことができる"},
+        {"content": "従来の常識や発想を転換し、新しいものや解決策を作り出している", "example": "従来の常識や発想を転換し、新しいものや解決策を作り出すことができる"},
+        {"content": "目標達成を意識し、新しいものを生み出すためのヒントを探している", "example": "成功イメージを常に意識しながら、新しいものを生み出すためのヒントを探すことができる"},
       ]
     }
   ]
@@ -51,9 +51,9 @@ export default function Table1() {
   const options = [1, 2, 3, 4, 5, 6]
 
   return (
-    <Box sx={{ width: '100%', overflowX: 'auto', mt: 5 }}>
+    <Box sx={{ width: '100%', overflowX: 'auto', mt:5 }}>
       <strong>
-        1. 前に踏み出す力（アクション）
+        2. 考え抜く力（シンキング）
       </strong>
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
