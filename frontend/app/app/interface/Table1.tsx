@@ -18,27 +18,63 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 
 interface ScoreData {
-    "ability1_category1_q1": number;
-    "ability1_category1_q2": number;
-    "ability1_category1_q3": number;
-    "ability1_category2_q1": number;
-    "ability1_category2_q2": number;
-    "ability1_category2_q3": number;
-    "ability1_category3_q1": number;
-    "ability1_category3_q2": number;
-    "ability1_category3_q3": number;
+    "ability1_category1_q1_0m": number;
+    "ability1_category1_q2_0m": number;
+    "ability1_category1_q3_0m": number;
+    "ability1_category2_q1_0m": number;
+    "ability1_category2_q2_0m": number;
+    "ability1_category2_q3_0m": number;
+    "ability1_category3_q1_0m": number;
+    "ability1_category3_q2_0m": number;
+    "ability1_category3_q3_0m": number;
+    "ability1_category1_q1_6m": number;
+    "ability1_category1_q2_6m": number;
+    "ability1_category1_q3_6m": number;
+    "ability1_category2_q1_6m": number;
+    "ability1_category2_q2_6m": number;
+    "ability1_category2_q3_6m": number;
+    "ability1_category3_q1_6m": number;
+    "ability1_category3_q2_6m": number;
+    "ability1_category3_q3_6m": number;
+    "ability1_category1_q1_12m": number;
+    "ability1_category1_q2_12m": number;
+    "ability1_category1_q3_12m": number;
+    "ability1_category2_q1_12m": number;
+    "ability1_category2_q2_12m": number;
+    "ability1_category2_q3_12m": number;
+    "ability1_category3_q1_12m": number;
+    "ability1_category3_q2_12m": number;
+    "ability1_category3_q3_12m": number;
 }
 export default function Table1() {
   const initialScoreData = {
-    "ability1_category1_q1": 0,
-    "ability1_category1_q2": 0,
-    "ability1_category1_q3": 0,
-    "ability1_category2_q1": 0,
-    "ability1_category2_q2": 0,
-    "ability1_category2_q3": 0,
-    "ability1_category3_q1": 0,
-    "ability1_category3_q2": 0,
-    "ability1_category3_q3": 0
+    "ability1_category1_q1_0m": 0,
+    "ability1_category1_q2_0m": 0,
+    "ability1_category1_q3_0m": 0,
+    "ability1_category2_q1_0m": 0,
+    "ability1_category2_q2_0m": 0,
+    "ability1_category2_q3_0m": 0,
+    "ability1_category3_q1_0m": 0,
+    "ability1_category3_q2_0m": 0,
+    "ability1_category3_q3_0m": 0,
+    "ability1_category1_q1_6m": 0,
+    "ability1_category1_q2_6m": 0,
+    "ability1_category1_q3_6m": 0,
+    "ability1_category2_q1_6m": 0,
+    "ability1_category2_q2_6m": 0,
+    "ability1_category2_q3_6m": 0,
+    "ability1_category3_q1_6m": 0,
+    "ability1_category3_q2_6m": 0,
+    "ability1_category3_q3_6m": 0,
+    "ability1_category1_q1_12m": 0,
+    "ability1_category1_q2_12m": 0,
+    "ability1_category1_q3_12m": 0,
+    "ability1_category2_q1_12m": 0,
+    "ability1_category2_q2_12m": 0,
+    "ability1_category2_q3_12m": 0,
+    "ability1_category3_q1_12m": 0,
+    "ability1_category3_q2_12m": 0,
+    "ability1_category3_q3_12m": 0,
   }
   const [scoreData, setScoreData] = useState<ScoreData>(initialScoreData)
 
@@ -74,9 +110,11 @@ export default function Table1() {
   const options = [1, 2, 3, 4, 5, 6]
 
   // @ts-ignore
-  const handleScoreChanged = (question_id) => (e) => {
+  const handleScoreChanged = (question_key: string, answer_at: number) => (e) => {
     const selectedScore: number = e.target.value
+    const question_id = `${question_key}_${answer_at}m`
     setScoreData(prevData => ({...prevData, [question_id]: selectedScore}))
+    console.log(scoreData)
   }
 
   const onSubmit = () => {
@@ -111,7 +149,7 @@ export default function Table1() {
                     <TableCell sx={{ whiteSpace: 'nowrap' }}>{d.content}</TableCell>
                     <TableCell>
                       <TextField
-                        onChange={handleScoreChanged(d.question_id)}
+                        onChange={handleScoreChanged(d.question_id, 0)}
                         type="number"
                         variant="outlined"
                         fullWidth
