@@ -12,7 +12,7 @@ export default function Header() {
       </Typography>
       <Stack direction="row" spacing={1}>
         {options.map((d, i) => (
-          <div><strong>{6-i}:</strong> {d}</div>
+          <div key={i}><strong>{6-i}:</strong> {d}</div>
         ))}
       </Stack>
   </Box>
