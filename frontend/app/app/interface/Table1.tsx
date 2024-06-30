@@ -1,5 +1,4 @@
 "use client";
-
 import * as React from "react";
 import { useState } from "react";
 import Button from '@mui/material/Button';
@@ -15,7 +14,6 @@ import Paper from '@mui/material/Paper';
 import Tooltip from '@mui/material/Tooltip';
 
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 
 interface ScoreData {
     "ability1_category1_q1_0m": number;
@@ -46,6 +44,7 @@ interface ScoreData {
     "ability1_category3_q2_12m": number;
     "ability1_category3_q3_12m": number;
 }
+
 export default function Table1() {
   const initialScoreData = {
     "ability1_category1_q1_0m": 0,
@@ -76,6 +75,7 @@ export default function Table1() {
     "ability1_category3_q2_12m": 0,
     "ability1_category3_q3_12m": 0,
   }
+
   const [scoreData, setScoreData] = useState<ScoreData>(initialScoreData)
 
   const headerRows = ["能力要素", "No", "内容", "入職時", "6ヶ月", "12ヶ月", "課題・今後の行動目標など"]
@@ -164,7 +164,7 @@ export default function Table1() {
                     </TableCell>
                     <TableCell>
                       <TextField
-                        // onChange={(e) => handleInputChange(e, row.id)}
+                        onChange={handleScoreChanged(d.question_id, 6)}
                         type="number"
                         variant="outlined"
                         fullWidth
@@ -179,7 +179,7 @@ export default function Table1() {
                     </TableCell>
                     <TableCell>
                       <TextField
-                        // onChange={(e) => handleInputChange(e, row.id)}
+                        onChange={handleScoreChanged(d.question_id, 12)}
                         type="number"
                         variant="outlined"
                         fullWidth
@@ -210,7 +210,7 @@ export default function Table1() {
           </TableBody>
         </Table>
       </TableContainer>
-      <Button variant="contained" onClick={onSubmit}>Submit</Button>
+      <Button variant="contained" sx={{backgroundColor: '#6ba5ee'}} onClick={onSubmit}>Submit</Button>
     </Box>
   )
 }
