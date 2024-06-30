@@ -12,127 +12,12 @@ import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import Paper from '@mui/material/Paper';
 import Tooltip from '@mui/material/Tooltip';
-
 import Box from '@mui/material/Box';
-
-interface ScoreData {
-    "ability3_category1_q2_0m": number;
-    "ability3_category1_q3_0m": number;
-    "ability3_category2_q1_0m": number;
-    "ability3_category2_q2_0m": number;
-    "ability3_category2_q3_0m": number;
-    "ability3_category3_q1_0m": number;
-    "ability3_category3_q2_0m": number;
-    "ability3_category3_q3_0m": number;
-    "ability3_category4_q1_0m": number;
-    "ability3_category4_q2_0m": number;
-    "ability3_category4_q3_0m": number;
-    "ability3_category5_q1_0m": number;
-    "ability3_category5_q2_0m": number;
-    "ability3_category5_q3_0m": number;
-    "ability3_category6_q1_0m": number;
-    "ability3_category6_q2_0m": number;
-    "ability3_category6_q3_0m": number;
-
-    "ability3_category1_q1_6m": number;
-    "ability3_category1_q2_6m": number;
-    "ability3_category1_q3_6m": number;
-    "ability3_category2_q1_6m": number;
-    "ability3_category2_q2_6m": number;
-    "ability3_category2_q3_6m": number;
-    "ability3_category3_q1_6m": number;
-    "ability3_category3_q2_6m": number;
-    "ability3_category3_q3_6m": number;
-    "ability3_category4_q1_6m": number;
-    "ability3_category4_q2_6m": number;
-    "ability3_category4_q3_6m": number;
-    "ability3_category5_q1_6m": number;
-    "ability3_category5_q2_6m": number;
-    "ability3_category5_q3_6m": number;
-    "ability3_category6_q1_6m": number;
-    "ability3_category6_q2_6m": number;
-    "ability3_category6_q3_6m": number;
-    
-    "ability3_category1_q1_12m": number;
-    "ability3_category1_q2_12m": number;
-    "ability3_category1_q3_12m": number;
-    "ability3_category2_q1_12m": number;
-    "ability3_category2_q2_12m": number;
-    "ability3_category2_q3_12m": number;
-    "ability3_category3_q1_12m": number;
-    "ability3_category3_q2_12m": number;
-    "ability3_category3_q3_12m": number;
-    "ability3_category4_q1_12m": number;
-    "ability3_category4_q2_12m": number;
-    "ability3_category4_q3_12m": number;
-    "ability3_category5_q1_12m": number;
-    "ability3_category5_q2_12m": number;
-    "ability3_category5_q3_12m": number;
-    "ability3_category6_q1_12m": number;
-    "ability3_category6_q2_12m": number;
-    "ability3_category6_q3_12m": number;
-}
+import { ScoreData3, initialScoreData3 } from "./types";
 
 export default function Table3() {
-  const initialScoreData = {
-    "ability3_category1_q2_0m": 0,
-    "ability3_category1_q3_0m": 0,
-    "ability3_category2_q1_0m": 0,
-    "ability3_category2_q2_0m": 0,
-    "ability3_category2_q3_0m": 0,
-    "ability3_category3_q1_0m": 0,
-    "ability3_category3_q2_0m": 0,
-    "ability3_category3_q3_0m": 0,
-    "ability3_category4_q1_0m": 0,
-    "ability3_category4_q2_0m": 0,
-    "ability3_category4_q3_0m": 0,
-    "ability3_category5_q1_0m": 0,
-    "ability3_category5_q2_0m": 0,
-    "ability3_category5_q3_0m": 0,
-    "ability3_category6_q1_0m": 0,
-    "ability3_category6_q2_0m": 0,
-    "ability3_category6_q3_0m": 0,
 
-    "ability3_category1_q1_6m": 0,
-    "ability3_category1_q2_6m": 0,
-    "ability3_category1_q3_6m": 0,
-    "ability3_category2_q1_6m": 0,
-    "ability3_category2_q2_6m": 0,
-    "ability3_category2_q3_6m": 0,
-    "ability3_category3_q1_6m": 0,
-    "ability3_category3_q2_6m": 0,
-    "ability3_category3_q3_6m": 0,
-    "ability3_category4_q1_6m": 0,
-    "ability3_category4_q2_6m": 0,
-    "ability3_category4_q3_6m": 0,
-    "ability3_category5_q1_6m": 0,
-    "ability3_category5_q2_6m": 0,
-    "ability3_category5_q3_6m": 0,
-    "ability3_category6_q1_6m": 0,
-    "ability3_category6_q2_6m": 0,
-    "ability3_category6_q3_6m": 0,
-    
-    "ability3_category1_q1_12m": 0,
-    "ability3_category1_q2_12m": 0,
-    "ability3_category1_q3_12m": 0,
-    "ability3_category2_q1_12m": 0,
-    "ability3_category2_q2_12m": 0,
-    "ability3_category2_q3_12m": 0,
-    "ability3_category3_q1_12m": 0,
-    "ability3_category3_q2_12m": 0,
-    "ability3_category3_q3_12m": 0,
-    "ability3_category4_q1_12m": 0,
-    "ability3_category4_q2_12m": 0,
-    "ability3_category4_q3_12m": 0,
-    "ability3_category5_q1_12m": 0,
-    "ability3_category5_q2_12m": 0,
-    "ability3_category5_q3_12m": 0,
-    "ability3_category6_q1_12m": 0,
-    "ability3_category6_q2_12m": 0,
-    "ability3_category6_q3_12m": 0,
-  }
-
-  const [scoreData, setScoreData] = useState<ScoreData>(initialScoreData)
+  const [scoreData, setScoreData] = useState<ScoreData3>(initialScoreData3)
 
   const headerRows = ["能力要素", "No", "内容", "入職時", "6ヶ月", "12ヶ月", "課題・今後の行動目標など"]
 

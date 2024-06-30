@@ -10,72 +10,12 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
-import Paper from '@mui/material/Paper';
-import Tooltip from '@mui/material/Tooltip';
 import Box from '@mui/material/Box';
-
-interface ScoreData {
-    "ability2_category1_q1_0m": number;
-    "ability2_category1_q2_0m": number;
-    "ability2_category1_q3_0m": number;
-    "ability2_category2_q1_0m": number;
-    "ability2_category2_q2_0m": number;
-    "ability2_category2_q3_0m": number;
-    "ability2_category3_q1_0m": number;
-    "ability2_category3_q2_0m": number;
-    "ability2_category3_q3_0m": number;
-    "ability2_category1_q1_6m": number;
-    "ability2_category1_q2_6m": number;
-    "ability2_category1_q3_6m": number;
-    "ability2_category2_q1_6m": number;
-    "ability2_category2_q2_6m": number;
-    "ability2_category2_q3_6m": number;
-    "ability2_category3_q1_6m": number;
-    "ability2_category3_q2_6m": number;
-    "ability2_category3_q3_6m": number;
-    "ability2_category1_q1_12m": number;
-    "ability2_category1_q2_12m": number;
-    "ability2_category1_q3_12m": number;
-    "ability2_category2_q1_12m": number;
-    "ability2_category2_q2_12m": number;
-    "ability2_category2_q3_12m": number;
-    "ability2_category3_q1_12m": number;
-    "ability2_category3_q2_12m": number;
-    "ability2_category3_q3_12m": number;
-}
+import { ScoreData2, initialScoreData2 } from "./types";
 
 export default function Table2() {
-  const initialScoreData = {
-    "ability2_category1_q1_0m": 0,
-    "ability2_category1_q2_0m": 0,
-    "ability2_category1_q3_0m": 0,
-    "ability2_category2_q1_0m": 0,
-    "ability2_category2_q2_0m": 0,
-    "ability2_category2_q3_0m": 0,
-    "ability2_category3_q1_0m": 0,
-    "ability2_category3_q2_0m": 0,
-    "ability2_category3_q3_0m": 0,
-    "ability2_category1_q1_6m": 0,
-    "ability2_category1_q2_6m": 0,
-    "ability2_category1_q3_6m": 0,
-    "ability2_category2_q1_6m": 0,
-    "ability2_category2_q2_6m": 0,
-    "ability2_category2_q3_6m": 0,
-    "ability2_category3_q1_6m": 0,
-    "ability2_category3_q2_6m": 0,
-    "ability2_category3_q3_6m": 0,
-    "ability2_category1_q1_12m": 0,
-    "ability2_category1_q2_12m": 0,
-    "ability2_category1_q3_12m": 0,
-    "ability2_category2_q1_12m": 0,
-    "ability2_category2_q2_12m": 0,
-    "ability2_category2_q3_12m": 0,
-    "ability2_category3_q1_12m": 0,
-    "ability2_category3_q2_12m": 0,
-    "ability2_category3_q3_12m": 0,
-  }
 
-  const [scoreData, setScoreData] = useState<ScoreData>(initialScoreData)
+  const [scoreData, setScoreData] = useState<ScoreData2>(initialScoreData2)
 
   const headerRows = ["能力要素", "No", "内容", "入職時", "6ヶ月", "12ヶ月", "課題・今後の行動目標など"]
 
