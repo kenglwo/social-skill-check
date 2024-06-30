@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { useRouter } from 'next/navigation';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Header from './Header';
@@ -9,6 +10,8 @@ import Table3 from './Table3';
 import { ScoreData1, ScoreData2, ScoreData3, ScoreDataAll, initialScoreDataAll } from './types';
 
 export default function Test() {
+  const router = useRouter();
+
   const [scoreDataAll, setScoreDataAll] = useState<ScoreDataAll>(initialScoreDataAll)
 
   const updateScoreDataAllOnParent = (ability: keyof ScoreDataAll, newScoreData: ScoreData1 | ScoreData2 | ScoreData3
@@ -22,8 +25,28 @@ export default function Test() {
     }))
   }
 
-  const onSubmit = () => {
-    // get score data from child tables
+  const onSubmit = async () => {
+    // send scoreDataAll to backend
+    const URL: string | undefined = process.env.NEXT_PUBLIC_API_URL;
+    if (URL !== undefined) {
+      const response = await fetch(URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({user_id: 'user1', score_data_all: scoreDataAll}),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const responseData = await response.json();
+    }
+
+
+    // go to next page
+    //  router.push('/score_result');
   }
 
   return (
