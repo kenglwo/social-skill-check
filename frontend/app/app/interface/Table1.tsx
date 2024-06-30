@@ -1,7 +1,6 @@
 "use client";
 import * as React from "react";
 import { useState } from "react";
-import Button from '@mui/material/Button';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -14,9 +13,13 @@ import Paper from '@mui/material/Paper';
 import Tooltip from '@mui/material/Tooltip';
 import Box from '@mui/material/Box';
 
-import { ScoreData1, initialScoreData1 } from "./types";
+import { ScoreData1, ScoreData2, ScoreData3, ScoreDataAll, initialScoreData1 } from "./types";
 
-export default function Table1() {
+interface Props {
+  updateScoreDataAllOnParent: (ability: keyof ScoreDataAll, newScoreData: ScoreData1 | ScoreData2 | ScoreData3) => void
+}
+
+export default function Table1(props: Props) {
 
   const [scoreData, setScoreData] = useState<ScoreData1>(initialScoreData1)
 
@@ -55,11 +58,14 @@ export default function Table1() {
   const handleScoreChanged = (question_key: string, answer_at: number) => (e) => {
     const selectedScore: number = e.target.value
     const question_id = `${question_key}_${answer_at}m`
-    setScoreData(prevData => ({...prevData, [question_id]: selectedScore}))
-    console.log(scoreData)
+
+    const newScoreData: ScoreData1 = {...scoreData, [question_id]: selectedScore}
+    setScoreData(newScoreData)
+    props.updateScoreDataAllOnParent("ability1", newScoreData)
   }
 
   const onSubmit = () => {
+    
     console.log(scoreData)
   }
 
@@ -152,7 +158,6 @@ export default function Table1() {
           </TableBody>
         </Table>
       </TableContainer>
-      <Button variant="contained" sx={{backgroundColor: '#6ba5ee'}} onClick={onSubmit}>Submit</Button>
     </Box>
   )
 }

@@ -116,8 +116,6 @@ export interface ScoreData3 {
     "ability3_category6_q3_12m": number;
 }
 
-export interface ScoreDataAll extends ScoreData1, ScoreData2, ScoreData3 {}
-
 
 export const initialScoreData1 = {
     "ability1_category1_q1_0m": 0,
@@ -237,4 +235,14 @@ export const initialScoreData1 = {
     "ability3_category6_q3_12m": 0,
   }
 
-export const initialScoreDataAll = {...initialScoreData1, ...initialScoreData2, ...initialScoreData3}
+export interface ScoreDataAll {
+    "ability1": ScoreData1;
+    "ability2": ScoreData2;
+    "ability3": ScoreData3;
+}
+
+export const initialScoreDataAll = {
+    "ability1": initialScoreData1,
+    "ability2": initialScoreData2,
+    "ability3": initialScoreData3
+}
