@@ -1,0 +1,2 @@
+class ScoreDatum < ApplicationRecord
+end
