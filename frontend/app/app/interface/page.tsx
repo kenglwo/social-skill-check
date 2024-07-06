@@ -27,7 +27,7 @@ export default function Test() {
 
   const onSubmit = async () => {
     // send scoreDataAll to backend
-    const URL: string | undefined = process.env.NEXT_PUBLIC_API_URL;
+    const URL: string | undefined = `${process.env.NEXT_PUBLIC_API_URL}/save_score_data`;
     if (URL !== undefined) {
       const response = await fetch(URL, {
         method: 'POST',
@@ -46,7 +46,7 @@ export default function Test() {
 
 
     // go to next page
-    //  router.push('/score_result');
+     router.push(`/score_result?user_id=${'user1'}`);
   }
 
   return (

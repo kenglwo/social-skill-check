@@ -44,6 +44,7 @@ class ManageScoreController < ApplicationController
     end
 
     def get_calculated_scores
+        user_id = params['user_id']
 
         # SELECT ability_num, category_num, SUM(score) AS total_score, recorded_at
         # FROM score_data
@@ -51,8 +52,14 @@ class ManageScoreController < ApplicationController
         # GROUP BY ability_num, category_num, recorded_at 
         # ORDER BY recorded_at asc, ability_num asc, category_num asc;
 
-        ScoreData.where(user_id: 'user_1', ability_num: 1, recorded_at: 0)
-         .group(:category_num)
-         .sum(:score)
+        @results = ScoreDatum
+            .select('ability_num, category_num, SUM(score) AS total_score, recorded_at')
+            .where(user_id: user_id)
+            .group('ability_num, category_num, recorded_at')
+            .order('recorded_at ASC, ability_num ASC, category_num ASC')
+
+        logger.debug @results
+
+        render json: @results.as_json(only: [:ability_num, :category_num, :total_score, :recorded_at])
     end
 end
