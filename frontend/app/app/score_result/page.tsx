@@ -62,8 +62,7 @@ export default function ScoreResult() {
   }
 
   return (
-    <Container maxWidth="lg" disableGutters={true}>
-      <div>Score Result</div>
+    <Container maxWidth="lg" disableGutters={true} sx={{mt: 5}}>
       <RadarCharts data={calculatedScoreData} />
     </Container>
   )

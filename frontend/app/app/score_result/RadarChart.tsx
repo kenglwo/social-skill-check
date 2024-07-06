@@ -1,5 +1,6 @@
 "use client"
 import React from 'react';
+import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Stack from '@mui/system/Stack';
 import { Radar } from 'react-chartjs-2';
@@ -149,17 +150,52 @@ const RadarCharts: React.FC<RadarChartsProps> = ({ data }) => {
 
 
   return (
-    <Stack direction="row" spacing={5}>
-      <Box sx={{width: "400px", height: "400px"}}>
-        <Radar data={generateChartData(1, 0 )} options={chartOptions1} />
+    <>
+      <Box>
+        <Typography variant="h6">入職時</Typography>
+        <Stack direction="row" spacing={5}>
+          <Box sx={{width: "400px", height: "400px"}}>
+            <Radar data={generateChartData(1, 0 )} options={chartOptions1} />
+          </Box>
+          <Box sx={{width: "400px", height: "400px"}}>
+            <Radar data={generateChartData(2, 0 )} options={chartOptions2} />
+          </Box>
+          <Box sx={{width: "400px", height: "400px"}}>
+            <Radar data={generateChartData(3, 0 )} options={chartOptions3} />
+          </Box>
+        </Stack>
       </Box>
-      <Box sx={{width: "400px", height: "400px"}}>
-        <Radar data={generateChartData(2, 0 )} options={chartOptions2} />
+
+      <Box>
+        <Typography variant="h6">6ヶ月</Typography>
+        <Stack direction="row" spacing={5}>
+          <Box sx={{width: "400px", height: "400px"}}>
+            <Radar data={generateChartData(1, 6 )} options={chartOptions1} />
+          </Box>
+          <Box sx={{width: "400px", height: "400px"}}>
+            <Radar data={generateChartData(2, 6 )} options={chartOptions2} />
+          </Box>
+          <Box sx={{width: "400px", height: "400px"}}>
+            <Radar data={generateChartData(3, 6 )} options={chartOptions3} />
+          </Box>
+        </Stack>
       </Box>
-      <Box sx={{width: "400px", height: "400px"}}>
-        <Radar data={generateChartData(3, 0 )} options={chartOptions3} />
+
+      <Box>
+        <Typography variant="h6">12ヶ月</Typography>
+        <Stack direction="row" spacing={5}>
+          <Box sx={{width: "400px", height: "400px"}}>
+            <Radar data={generateChartData(1, 12 )} options={chartOptions1} />
+          </Box>
+          <Box sx={{width: "400px", height: "400px"}}>
+            <Radar data={generateChartData(2, 12 )} options={chartOptions2} />
+          </Box>
+          <Box sx={{width: "400px", height: "400px"}}>
+            <Radar data={generateChartData(3, 12 )} options={chartOptions3} />
+          </Box>
+        </Stack>
       </Box>
-    </Stack>
+    </>
   );
 };
 
