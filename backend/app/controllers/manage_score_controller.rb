@@ -19,21 +19,22 @@ class ManageScoreController < ApplicationController
                 recorded_at = score_key_components[3].chomp("m").to_i
 
                 # logger.debug "#{ability_num}_#{category_num}_#{question_num}_#{recorded_at}"
-                attributes = {
-                    user_id: user_id,
-                    ability_num: ability_num,
-                    category_num: category_num,
-                    question_num: question_num,
-                    recorded_at: recorded_at,
-                    score: score_value,
-                    created_at: Time.current,
-                    updated_at: Time.current
-                }
+                # attributes = {
+                #     user_id: user_id,
+                #     ability_num: ability_num,
+                #     category_num: category_num,
+                #     question_num: question_num,
+                #     recorded_at: recorded_at,
+                #     score: score_value,
+                #     created_at: Time.current,
+                #     updated_at: Time.current
+                # }
 
-                update_fields = { score: score_value }
+                # update_fields = { score: score_value }
 
-                ScoreDatum.upsert(attributes)
+                # ScoreDatum.upsert(attributes)
                 # ScoreDatum.upsert(attributes, unique_by: [:user_id, :ability_num, :category_num, :question_num, :recorded_at])
+                create_or_update_score(user_id, ability_num, category_num, question_num, recorded_at, score_value)
             end
         end
 
@@ -62,4 +63,30 @@ class ManageScoreController < ApplicationController
 
         render json: @results.as_json(only: [:ability_num, :category_num, :total_score, :recorded_at])
     end
+
+    def create_or_update_score(user_id, ability_num, category_num, question_num, recorded_at, score_value)
+        # Check if the record exists
+        existing_record = ScoreDatum.find_by(
+            user_id: user_id,
+            ability_num: ability_num,
+            category_num: category_num,
+            question_num: question_num,
+            recorded_at: recorded_at
+        )
+
+        if existing_record
+            # Update the existing record
+            existing_record.update(score: score_value)
+        else
+            # Insert a new record
+            ScoreDatum.create(
+                user_id: user_id,
+                ability_num: ability_num,
+                category_num: category_num,
+                question_num: question_num,
+                recorded_at: recorded_at,
+                score: score_value
+            )
+        end
+  end
 end
