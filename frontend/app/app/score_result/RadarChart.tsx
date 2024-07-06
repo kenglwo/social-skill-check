@@ -14,6 +14,7 @@ import {
   Legend,
   ChartOptions
 } from 'chart.js';
+import "./custom.css"
 
 ChartJS.register(RadialLinearScale, PointElement, LineElement, Filler, Tooltip, Legend);
 
@@ -151,48 +152,118 @@ const RadarCharts: React.FC<RadarChartsProps> = ({ data }) => {
 
   return (
     <>
-      <Box>
-        <Typography variant="h6">入職時</Typography>
+      <Box sx={{mb: 5}}>
+        <Typography variant="h5">入職時</Typography>
         <Stack direction="row" spacing={5}>
-          <Box sx={{width: "400px", height: "400px"}}>
-            <Radar data={generateChartData(1, 0 )} options={chartOptions1} />
-          </Box>
-          <Box sx={{width: "400px", height: "400px"}}>
-            <Radar data={generateChartData(2, 0 )} options={chartOptions2} />
-          </Box>
-          <Box sx={{width: "400px", height: "400px"}}>
-            <Radar data={generateChartData(3, 0 )} options={chartOptions3} />
-          </Box>
+          <Stack  spacing={1} sx={{flex: "display", alignItems: "center"}}>
+            <Box sx={{width: "400px", height: "400px"}}>
+              <Radar data={generateChartData(1, 0 )} options={chartOptions1} />
+            </Box>
+            <Box className="score_result">
+              <Typography variant="h5">
+                {data.filter(d => d.ability_num === 1).filter(d => d.recorded_at === 0).reduce((sum, item) => sum + item.total_score, 0)}/63
+              </Typography>
+            </Box>
+          </Stack>
+
+          <Stack  spacing={1} sx={{flex: "display", alignItems: "center"}}>
+            <Box sx={{width: "400px", height: "400px"}}>
+              <Radar data={generateChartData(2, 0 )} options={chartOptions2} />
+            </Box>
+            <Box className="score_result">
+              <Typography variant="h5">
+                {data.filter(d => d.ability_num === 2).filter(d => d.recorded_at === 0).reduce((sum, item) => sum + item.total_score, 0)}/63
+              </Typography>
+            </Box>
+          </Stack>
+
+          <Stack  spacing={1} sx={{flex: "display", alignItems: "center"}}>
+            <Box sx={{width: "400px", height: "400px"}}>
+              <Radar data={generateChartData(3, 0 )} options={chartOptions3} />
+            </Box>
+            <Box className="score_result">
+              <Typography variant="h5">
+                {data.filter(d => d.ability_num === 3).filter(d => d.recorded_at === 0).reduce((sum, item) => sum + item.total_score, 0)}/108
+              </Typography>
+            </Box>
+          </Stack>
         </Stack>
       </Box>
 
-      <Box>
-        <Typography variant="h6">6ヶ月</Typography>
+      <Box sx={{mb: 5}}>
+        <Typography variant="h5">6ヶ月</Typography>
         <Stack direction="row" spacing={5}>
-          <Box sx={{width: "400px", height: "400px"}}>
-            <Radar data={generateChartData(1, 6 )} options={chartOptions1} />
-          </Box>
-          <Box sx={{width: "400px", height: "400px"}}>
-            <Radar data={generateChartData(2, 6 )} options={chartOptions2} />
-          </Box>
-          <Box sx={{width: "400px", height: "400px"}}>
-            <Radar data={generateChartData(3, 6 )} options={chartOptions3} />
-          </Box>
+          <Stack  spacing={1} sx={{flex: "display", alignItems: "center"}}>
+            <Box sx={{width: "400px", height: "400px"}}>
+              <Radar data={generateChartData(1, 6 )} options={chartOptions1} />
+            </Box>
+            <Box className="score_result">
+              <Typography variant="h5">
+                {data.filter(d => d.ability_num === 1).filter(d => d.recorded_at === 6).reduce((sum, item) => sum + item.total_score, 0)}/63
+              </Typography>
+            </Box>
+          </Stack>
+
+          <Stack  spacing={1} sx={{flex: "display", alignItems: "center"}}>
+            <Box sx={{width: "400px", height: "400px"}}>
+              <Radar data={generateChartData(2, 6 )} options={chartOptions2} />
+            </Box>
+            <Box className="score_result">
+              <Typography variant="h5">
+                {data.filter(d => d.ability_num === 2).filter(d => d.recorded_at === 6).reduce((sum, item) => sum + item.total_score, 0)}/63
+              </Typography>
+            </Box>
+          </Stack>
+
+          <Stack  spacing={1} sx={{flex: "display", alignItems: "center"}}>
+            <Box sx={{width: "400px", height: "400px"}}>
+              <Radar data={generateChartData(3, 6 )} options={chartOptions3} />
+            </Box>
+            <Box className="score_result">
+              <Typography variant="h5">
+                {data.filter(d => d.ability_num === 3).filter(d => d.recorded_at === 6).reduce((sum, item) => sum + item.total_score, 0)}/108
+              </Typography>
+            </Box>
+          </Stack>
+
         </Stack>
       </Box>
 
-      <Box>
-        <Typography variant="h6">12ヶ月</Typography>
+      <Box sx={{mb: 5}}>
+        <Typography variant="h5">12ヶ月</Typography>
         <Stack direction="row" spacing={5}>
-          <Box sx={{width: "400px", height: "400px"}}>
-            <Radar data={generateChartData(1, 12 )} options={chartOptions1} />
-          </Box>
-          <Box sx={{width: "400px", height: "400px"}}>
-            <Radar data={generateChartData(2, 12 )} options={chartOptions2} />
-          </Box>
-          <Box sx={{width: "400px", height: "400px"}}>
-            <Radar data={generateChartData(3, 12 )} options={chartOptions3} />
-          </Box>
+          <Stack  spacing={1} sx={{flex: "display", alignItems: "center"}}>
+            <Box sx={{width: "400px", height: "400px"}}>
+              <Radar data={generateChartData(1, 12 )} options={chartOptions1} />
+            </Box>
+            <Box className="score_result">
+              <Typography variant="h5">
+                {data.filter(d => d.ability_num === 1).filter(d => d.recorded_at === 12).reduce((sum, item) => sum + item.total_score, 0)}/63
+              </Typography>
+            </Box>
+          </Stack>
+
+          <Stack  spacing={1} sx={{flex: "display", alignItems: "center"}}>
+            <Box sx={{width: "400px", height: "400px"}}>
+              <Radar data={generateChartData(2, 12 )} options={chartOptions2} />
+            </Box>
+            <Box className="score_result">
+              <Typography variant="h5">
+                {data.filter(d => d.ability_num === 2).filter(d => d.recorded_at === 12).reduce((sum, item) => sum + item.total_score, 0)}/63
+              </Typography>
+            </Box>
+          </Stack>
+
+          <Stack  spacing={1} sx={{flex: "display", alignItems: "center"}}>
+            <Box sx={{width: "400px", height: "400px"}}>
+              <Radar data={generateChartData(3, 12 )} options={chartOptions3} />
+            </Box>
+            <Box className="score_result">
+              <Typography variant="h5">
+                {data.filter(d => d.ability_num === 3).filter(d => d.recorded_at === 12).reduce((sum, item) => sum + item.total_score, 0)}/108
+              </Typography>
+            </Box>
+          </Stack>
         </Stack>
       </Box>
     </>
