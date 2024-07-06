@@ -19,15 +19,21 @@ class ManageScoreController < ApplicationController
                 recorded_at = score_key_components[3].chomp("m").to_i
 
                 # logger.debug "#{ability_num}_#{category_num}_#{question_num}_#{recorded_at}"
-
-                ScoreDatum.create(
+                attributes = {
                     user_id: user_id,
                     ability_num: ability_num,
                     category_num: category_num,
                     question_num: question_num,
                     recorded_at: recorded_at,
-                    score: score_value
-                )
+                    score: score_value,
+                    created_at: Time.current,
+                    updated_at: Time.current
+                }
+
+                update_fields = { score: score_value }
+
+                ScoreDatum.upsert(attributes)
+                # ScoreDatum.upsert(attributes, unique_by: [:user_id, :ability_num, :category_num, :question_num, :recorded_at])
             end
         end
 
@@ -35,5 +41,18 @@ class ManageScoreController < ApplicationController
         api_result = {"status": "OK"}
 
         render json: api_result
+    end
+
+    def get_calculated_scores
+
+        # SELECT ability_num, category_num, SUM(score) AS total_score, recorded_at
+        # FROM score_data
+        # WHERE user_id = 'user1'
+        # GROUP BY ability_num, category_num, recorded_at 
+        # ORDER BY recorded_at asc, ability_num asc, category_num asc;
+
+        ScoreData.where(user_id: 'user_1', ability_num: 1, recorded_at: 0)
+         .group(:category_num)
+         .sum(:score)
     end
 end
