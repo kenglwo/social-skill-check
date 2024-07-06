@@ -1,12 +1,10 @@
-version: "3.8"
-
 volumes:
   hoge:
-  sample_db:
+  nurse_db:
 
 services:
   frontend:
-    container_name: sample-frontend
+    container_name: nurse-frontend
     build:
       context: ./frontend
       dockerfile: ./Dockerfile
@@ -25,7 +23,7 @@ services:
     #     yarn build"
     # command: bash -c "yarn start"
   backend:
-    container_name: sample-backend
+    container_name: nurse-backend
     build:
       context: ./backend
       dockerfile: Dockerfile
@@ -43,10 +41,10 @@ services:
     #     rm -f tmp/pids/server.pid &&
     #     rails s -p 3003 -b '0.0.0.0'"
   db:
-    container_name: sample-db
+    container_name: nurse-db
     build: ./db
     volumes:
-      - sample_db:/var/lib/postgresql/data
+      - nurse_db:/var/lib/postgresql/data
     environment:
       POSTGRES_DB: postgres
       POSTGRES_USER: postgres
