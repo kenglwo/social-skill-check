@@ -2,15 +2,18 @@
 import React from 'react'
 import { useState } from "react";
 import { useRouter } from 'next/navigation';
+import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import Container from '@mui/material/Container';
+import Alert from '@mui/material/Alert';
 
 export default function Login() {
   const [userId, setUserId] = useState<string>("")
   const [password, setPassword] = useState<string>("")
+  const [isUserIdValid, setIsUseIdValid] = useState<boolean | null>(null)
+  const [isPasswordValid, setIsPasswordValid] = useState<boolean | null>(null)
   const router = useRouter();
 
   const onUserIdChanged = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => {
@@ -24,21 +27,30 @@ export default function Login() {
   }
 
   const onClick = () => {
+    userId !== "" ? setIsUseIdValid(true) : setIsUseIdValid(false)
+    password !== "" ? setIsPasswordValid(true) : setIsPasswordValid(false)
+
     console.log(userId)
     console.log(password)
-    // router.push(`/interface?user_id=${'user1'}`);  
+
+    // check userId and password is not empty
+    if (isUserIdValid && isPasswordValid) {
+      // TODO: check with db
+      // router.push(`/interface?user_id=${'user1'}`);  
+
+    }
   }
 
 
   return (
     <Container maxWidth="lg" sx={{ m: 5}}>
       <Typography variant="h3" gutterBottom sx={{mb: 5}}>
-       Login Page
+        ログインページ
       </Typography>
 
       <Stack direction="row" sx={{ display: "flex", alignItems: "center", mb: 4 }}>
-        <Typography variant="h5" sx={{mr: 5}}>
-          User ID
+        <Typography variant="h5" sx={{mr: 2}}>
+          ユーザーID
         </Typography>
         <TextField
             required
@@ -50,7 +62,7 @@ export default function Login() {
 
       <Stack direction="row" sx={{ display: "flex", alignItems: "center" }}>
         <Typography variant="h5" sx={{mr: 5}}>
-          Password
+          パスワード
         </Typography>
         <TextField
             required
@@ -60,6 +72,8 @@ export default function Login() {
         />
       </Stack>
       <Button variant="contained" sx={{backgroundColor: '#6ba5ee', mt: 4}} onClick={onClick}>Submit</Button>
+      {isUserIdValid === false && <Alert severity="error" sx={{mt: 5}}>ユーザーIDを入力して下さい</Alert>}
+      {isPasswordValid === false && <Alert severity="error" sx={{mt: 5}}>パスワードを入力して下さい</Alert>}
     </Container>
   )
 }
