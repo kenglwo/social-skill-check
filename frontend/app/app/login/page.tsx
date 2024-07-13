@@ -26,7 +26,7 @@ export default function Login() {
     setPassword(newPassword)
   }
 
-  const onClick = () => {
+  const onClick = async () => {
     userId !== "" ? setIsUseIdValid(true) : setIsUseIdValid(false)
     password !== "" ? setIsPasswordValid(true) : setIsPasswordValid(false)
 
@@ -36,6 +36,26 @@ export default function Login() {
     // check userId and password is not empty
     if (isUserIdValid && isPasswordValid) {
       // TODO: check with db
+      const URL: string | undefined = `${process.env.NEXT_PUBLIC_API_URL}/user_authentication`;
+      if (URL !== undefined) {
+        const response = await fetch(URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({user_id: userId, password: password}),
+        });
+
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+
+        const data = await response.json()
+        console.log(data)
+
+
+      }
+
       // router.push(`/interface?user_id=${'user1'}`);  
 
     }
