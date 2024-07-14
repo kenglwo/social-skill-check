@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Header from './Header';
@@ -11,6 +11,8 @@ import { ScoreData1, ScoreData2, ScoreData3, ScoreDataAll, initialScoreDataAll }
 
 export default function Test() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const userId = searchParams.get('user_id');
 
   const [scoreDataAll, setScoreDataAll] = useState<ScoreDataAll>(initialScoreDataAll)
 
@@ -46,7 +48,7 @@ export default function Test() {
 
 
     // go to next page
-     router.push(`/score_result?user_id=${'user1'}`);
+     router.push(`/score_result?user_id=${userId}`);
   }
 
   return (

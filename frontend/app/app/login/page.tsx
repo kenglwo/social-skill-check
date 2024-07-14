@@ -62,14 +62,9 @@ export default function Login() {
         } else if (data["authentication_result"] === "valid password") {
           setIsAuthenticationFailed(false)
           setAuthenticationMessage("")
+          router.push(`/interface?user_id=${userId}`);  
         }
-        console.log(data)
-
-
       }
-
-      // router.push(`/interface?user_id=${'user1'}`);  
-
     }
   }
 
